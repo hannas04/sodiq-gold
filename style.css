@@ -1,0 +1,675 @@
+
+        /* --- CSS VARIABLES & BASE STYLES --- */
+        :root {
+            --color-dark: #0f0f0f;
+            --color-mid-dark: #222222; /* Collection section background */
+            /* --color-gold: #FFD700; */
+            --color-gold:#ffe066 ; /* Softer gold */
+            --color-text-dark-accent: #D4AF37;
+            --color-white: #ffffff;
+            --font-prata: 'Prata', serif;
+            --font-rubik: 'Rubik', sans-serif;
+            --footer-bg: #1A1A1A; /* Darker than dark for contrast */
+            --footer-text-light: #CCCCCC;
+        }
+
+        body {
+            font-family: var(--font-rubik);
+            background-color: var(--color-dark);
+            color: var(--color-white);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            /* Prevents horizontal scrolling during slide-in animations */
+            overflow-x: hidden; 
+            scroll-behavior: smooth; /* For smooth anchor scrolling */
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-prata);
+        }
+
+        /* --- LAYOUT UTILITIES & CONTAINERS --- */
+        .container {
+            max-width: 80rem; /* max-w-7xl */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1rem; /* px-4 */
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) { /* sm */
+            .container {
+                padding-left: 1.5rem; /* sm:px-6 */
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) { /* lg */
+            .container {
+                padding-left: 2rem; /* lg:px-8 */
+                padding-right: 2rem;
+            }
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .nav-link-group {
+            display: none;
+            gap: 2rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-link-group a {
+            transition: color 200ms ease;
+        }
+        
+        .nav-link-group a:hover {
+            color: var(--color-gold);
+        }
+
+        .primary-links {
+            margin-left: 2rem;
+        }
+
+        /* Desktop Navigation (lg:flex) */
+        @media (min-width: 1024px) {
+            .nav-link-group {
+                display: flex;
+            }
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Logo Positioning */
+        .logo-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo-title {
+            font-size: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-dark-accent);
+        }
+        
+        /* --- MOBILE MENU STYLES --- */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(15, 15, 15, 0.98);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 90;
+            transform: translateY(-100%);
+            transition: transform 300ms ease-out;
+        }
+        
+        .mobile-menu.open {
+            display: flex;
+            flex-direction: column;
+            transform: translateY(0);
+        }
+        
+        .mobile-menu-content {
+            padding-top: 5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            width: 100%;
+        }
+
+        .mobile-menu-link {
+            display: block;
+            padding: 1rem 0;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 1.125rem;
+            border-bottom: 1px solid #2d2d2d;
+            font-family: var(--font-prata);
+        }
+        
+        .mobile-menu-link:hover {
+            color: var(--color-gold);
+            transition: color 200ms ease;
+        }
+        
+        /* Mobile Menu Button Styling (Burger/Close) */
+        .mobile-menu-btn {
+            color: var(--color-white);
+            border: none;
+            background: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 110;
+            transition: transform 300ms ease;
+        }
+
+        /* --- HERO SECTION FIXES --- */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 5rem; /* Ensure space for header on mobile */
+            padding-bottom: 5rem;
+        }
+
+        .hero-bg {
+            background-image: url(img/img-8.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .dark-overlay {
+             position: absolute;
+             top: 0;
+             right: 0;
+             bottom: 0;
+             left: 0;
+             z-index: 0;
+             background: 
+                 linear-gradient(rgba(0, 0, 0, 0.87), rgba(0, 0, 0, 0.808)); 
+        }
+
+        /* FIX: Center the text content within the container */
+        .hero-container {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            max-width: 40rem; /* Constrain width for better readability */
+        }
+
+        .hero-pre-title {
+            color: var(--color-text-dark-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2.5rem; /* Default mobile size */
+            line-height: 1.2;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4rem; /* Desktop size */
+            }
+        }
+
+        /* Button Group & Styles */
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        /* Overridden for About section */
+        .about-us-section .button-group {
+             justify-content: flex-start;
+        }
+
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: all 300ms ease;
+            border: 2px solid transparent;
+            font-family: var(--font-rubik);
+        }
+
+        .btn-primary {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border-color: var(--color-white);
+            color: var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-white);
+            color: var(--color-dark);
+        }
+
+        /* --- GENERIC SECTION HEADER STYLES (FIXED) --- */
+        .about-us-section, .testimonials-section, .collection-section, .features-section, .stats-section, .location-section, .collection-arrived-section {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .collection-header, .features-header, .location-header, .arrival-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .collection-icon {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--color-text-dark-accent);
+            font-size: 1.25rem;
+            padding: 0 1rem;
+        }
+        .collection-icon::before, .collection-icon::after {
+            content: ''; 
+            position: absolute; 
+            height: 1px; 
+            background: var(--color-text-dark-accent); 
+            width: 2rem; 
+            top: 50%; 
+            transform: translateY(-50%);
+        }
+        .collection-icon::before { left: -3rem; }
+        .collection-icon::after { right: -3rem; }
+
+        .collection-offer, .features-pre-title, .location-offer {
+            color: #aaaaaa;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .collection-title, .features-title, .location-title, .arrival-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        /* --- ABOUT US SECTION --- */
+        .about-us-section {
+            padding: 6rem 0;
+            background-color: var(--color-dark);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            text-align: left;
+        }
+
+        @media (min-width: 1024px) {
+            .about-content {
+                flex-direction: row;
+                align-items: center;
+                text-align: left;
+            }
+        }
+
+        .ceo-info {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .ceo-image-container {
+            width: 100%;
+            min-height: 400px;
+            aspect-ratio: 1 / 1.1;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            background-image: url('https://placehold.co/500x550/333333/D4AF37?text=CEO+Portrait');
+            background-size: cover;
+            background-position: center top;
+        }
+
+        .ceo-details h3 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-gold);
+        }
+
+        .ceo-details p {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-bottom: 1.5rem;
+        }
+
+        .ceo-quote {
+            font-family: var(--font-prata);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--color-white);
+            border-left: 3px solid var(--color-text-dark-accent);
+            padding-left: 1rem;
+            margin-top: 2rem;
+        }
+
+        .ceo-name {
+            display: block;
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: var(--color-text-dark-accent);
+            font-weight: 600;
+        }
+
+        /* --- TESTIMONIALS --- */
+
+/* sample */
+ .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1; /* Place behind content */
+        }
+
+        .diamond-icon {
+            position: absolute;
+            pointer-events: none; /* Ignore mouse events */
+            opacity: 0; /* Start hidden, opacity will be set randomly by JS */
+            color: #d1d5db; /* Grayish color (gray-300) */
+            animation: twinkle linear infinite; /* Apply twinkling animation */
+        }
+
+        /* Define the subtle twinkling animation */
+        @keyframes twinkle {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.1); opacity: 0.25; }
+        }
+/*  */
+
+
+        .testimonials-section {
+            padding: 6rem 0;
+            background-color: var(--color-mid-dark);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .testimonial-card {
+            background-color: #1a1a1a;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            transition: all 300ms ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--color-gold);
+        }
+
+        .testimonial-icon {
+            font-size: 1.5rem;
+            color: var(--color-text-dark-accent);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 0.95rem;
+            color: #dddddd;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--color-gold);
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            display: block;
+            font-size: 0.8rem;
+            color: #aaaaaa;
+        }
+        
+        /* --- DECORATIVE ICON OVERLAY (Jewelry Icon) --- */
+        .collection-section {
+            position: relative; /* Context for absolute icon */
+        }
+        
+        .jewelry-icon-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #555555; /* Dark grey */
+            opacity: 0.1; /* Transparent */
+            font-size: 15rem; /* Large size */
+            z-index: 1; /* Below grid content (z-index of cards is higher) */
+            pointer-events: none; /* Make it unclickable */
+            display: none; /* Hide by default for smaller screens */
+            animation: rotateIcon 15s linear infinite; /* Subtle rotation */
+        }
+
+        @media (min-width: 1024px) {
+            .jewelry-icon-overlay {
+                display: block;
+            }
+        }
+
+        @keyframes rotateIcon {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* --- GRID STYLES (FIXED) --- */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            position: relative; /* To ensure products sit above the icon overlay */
+            z-index: 2;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+        .arrival-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .arrival-large-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .collection-grid { grid-template-columns: repeat(4, 1fr); }
+            .feature-grid { grid-template-columns: repeat(3, 1fr); }
+            .location-grid { grid-template-columns: repeat(3, 1fr); }
+            .arrival-grid { grid-template-columns: repeat(4, 1fr); }
+            .arrival-large-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* --- SCROLL ANIMATION STYLES (AOS) --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px); 
+            transition: opacity 800ms ease-out, transform 800ms ease-out;
+            transition-delay: 0ms; 
+        }
+
+        .animate-on-scroll.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-left { transform: translateX(-50px); }
+        .slide-left.show { transform: translateX(0); }
+        
+        .slide-right { transform: translateX(50px); }
+        .slide-right.show { transform: translateX(0); }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
+        .delay-600 { transition-delay: 600ms; }
+        
+        /* --- REMAINDER OF EXISTING CSS --- */
+        .view-more { display: inline-block; margin-top: 0.5rem; color: var(--color-text-dark-accent); font-size: 0.9rem; transition: color 200ms ease; }
+        .view-more:hover { color: var(--color-gold); }
+        .product-image-container { width: 100%; border-radius: 0.25rem; margin-bottom: 1rem; aspect-ratio: 1 / 1.1; background-size: cover; background-position: center 30%; position: relative; overflow: hidden; }
+        .product-image-container::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.1); transition: background 300ms ease; }
+        .product-card:hover .product-image-container::before { background: rgba(0, 0, 0, 0.2); }
+        .product-name { font-family: var(--font-prata); font-size: 1.125rem; margin-bottom: 0.3rem; }
+        .product-details { font-size: 0.8rem; color: #aaaaaa; margin-bottom: 1rem; }
+        .product-price { font-family: var(--font-rubik); font-weight: 700; color: var(--color-text-dark-accent); font-size: 1rem; }
+        .collection-section { background-color: var(--color-mid-dark); }
+        .feature-card { background-color: transparent; padding: 2rem 1.5rem; border: 1px solid #333333; border-radius: 0.5rem; text-align: left; transition: border-color 300ms ease, box-shadow 300ms ease; }
+        .feature-card:hover { border-color: var(--color-text-dark-accent); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+        .feature-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .feature-number { font-size: 2.5rem; font-family: var(--font-prata); color: #444444; }
+        .feature-icon { font-size: 2rem; color: var(--color-text-dark-accent); }
+        .feature-title { font-family: var(--font-prata); font-size: 1.375rem; margin-bottom: 1rem; color: var(--color-gold); }
+        .feature-description { font-size: 0.9rem; color: #cccccc; }
+        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 4rem; }
+        @media (min-width: 768px) { .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 3rem; } }
+        .stat-card { text-align: center; }
+        .stat-icon { font-size: 2.5rem; color: var(--color-text-dark-accent); margin-bottom: 0.75rem; }
+        .stat-value { font-family: var(--font-prata); font-size: 2.5rem; line-height: 1; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #aaaaaa; }
+        .media-container { position: relative; background-color: #333; min-height: 400px; display: flex; justify-content: center; align-items: center; border-radius: 0.5rem; overflow: hidden; background-image: url('https://placehold.co/1000x500/222222/ffffff?text=Jewelry+Model+Showcase'); background-size: cover; background-position: center; }
+        .video-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.4); display: flex; justify-content: center; align-items: center; transition: background 300ms ease; cursor: pointer; }
+        .video-overlay:hover { background: rgba(0, 0, 0, 0.2); }
+        .play-button { font-size: 3rem; width: 5rem; height: 5rem; border-radius: 50%; background-color: rgba(255, 255, 255, 0.9); color: var(--color-dark); display: flex; justify-content: center; align-items: center; transition: transform 300ms ease; }
+        .play-button:hover { transform: scale(1.1); }
+        .location-card { height: 400px; border-radius: 0.5rem; overflow: hidden; position: relative; cursor: pointer; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding: 1.5rem; transition: transform 300ms ease; text-align: left; border: 1px solid #333333; }
+        .location-card.highlight { border: none; }
+        .location-card:hover { transform: translateY(-5px); }
+        .location-card-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 500ms ease; }
+        .location-card:hover .location-card-bg { transform: scale(1.05); }
+        .card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 70%); }
+        .card-content { position: relative; z-index: 2; color: var(--color-white); width: 100%; }
+        .card-icon { font-size: 2rem; color: var(--color-text-dark-accent); margin-bottom: 0.5rem; }
+        .card-location-title { font-family: var(--font-prata); font-size: 1.5rem; line-height: 1.2; margin-bottom: 0.25rem; }
+        .card-date { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-text-dark-accent); }
+        .location-card.highlight { background-color: var(--color-gold); transform: none; }
+        .location-card.highlight .card-content { color: var(--color-dark); }
+        .location-card.highlight .card-date, .location-card.highlight .card-icon { color: var(--color-mid-dark); }
+        .location-card.highlight .card-overlay { background: none; }
+        .arrival-card, .large-card { aspect-ratio: 1 / 1; border-radius: 0.5rem; overflow: hidden; position: relative; cursor: pointer; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; transition: transform 300ms ease, box-shadow 300ms ease; text-align: center; background-size: cover; background-position: center; border: 1px solid transparent; }
+        .arrival-card:hover, .large-card:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.1); }
+        .arrival-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: background 300ms ease; }
+        .arrival-card:hover .arrival-card-overlay { background: rgba(0,0,0,0.5); }
+        .card-inner-content { position: relative; z-index: 2; }
+        .arrival-icon { font-size: 2.5rem; color: var(--color-white); margin-bottom: 1rem; }
+        .card-large-right .card-inner-content { color: var(--color-dark); }
+        .card-large-right .arrival-icon { color: var(--color-dark); }
+        .arrival-card-title { font-family: var(--font-prata); font-size: 1.5rem; line-height: 1.2; margin-bottom: 0.5rem; text-transform: capitalize; }
+        .arrival-card-title.large { font-size: 2rem; }
+        .arrival-card-text { font-size: 0.85rem; color: #cccccc; max-width: 80%; margin: 0 auto; }
+        .card-large-right .arrival-card-text { color: #333333; }
+        footer { background-color: var(--footer-bg); padding-top: 5rem; color: var(--footer-text-light); position: relative; }
+        footer::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.05; background: repeating-linear-gradient( -45deg, #333333 0, #333333 1px, transparent 1px, transparent 20px ); z-index: 0; }
+        .footer-main { position: relative; z-index: 1; padding-bottom: 4rem; display: grid; grid-template-columns: repeat(1, 1fr); gap: 3rem; text-align: center; }
+        @media (min-width: 768px) { .footer-main { grid-template-columns: 2fr 1.5fr 1.5fr; text-align: left; } }
+        .footer-logo-title { font-family: var(--font-prata); font-size: 1.5rem; letter-spacing: 0.1em; color: var(--color-white); }
+        .footer-logo-subtitle { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text-dark-accent); margin-bottom: 1rem; }
+        .footer-about-text { font-size: 0.85rem; line-height: 1.6; margin-bottom: 2rem; color: #AAAAAA; }
+        .social-links { display: flex; gap: 1rem; justify-content: center; }
+        @media (min-width: 768px) { .social-links { justify-content: flex-start; } }
+        .social-link { width: 2.5rem; height: 2.5rem; border-radius: 0.25rem; background-color: var(--color-dark); color: var(--color-gold); display: flex; justify-content: center; align-items: center; transition: background-color 200ms ease; font-size: 1rem; }
+        .social-link:hover { background-color: var(--color-gold); color: var(--color-dark); }
+        .footer-heading { font-family: var(--font-prata); font-size: 1.25rem; color: var(--color-white); margin-bottom: 1.5rem; border-bottom: 1px solid #333; padding-bottom: 0.5rem; }
+        .collection-links { columns: 2; font-size: 0.9rem; color: #AAAAAA; }
+        .collection-links a { display: block; margin-bottom: 0.75rem; transition: color 200ms ease; }
+        .collection-links a:hover { color: var(--color-gold); }
+        .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.9rem; }
+        @media (max-width: 767px) { .contact-item { justify-content: center; } }
+        .contact-icon-wrapper { width: 2.5rem; height: 2.5rem; min-width: 2.5rem; border-radius: 50%; background-color: var(--color-mid-dark); color: var(--color-gold); display: flex; justify-content: center; align-items: center; }
+        .contact-info strong { display: block; font-weight: 700; color: var(--color-white); margin-bottom: 0.1rem; }
+        .contact-info span { color: #AAAAAA; }
+        .footer-bottom { border-top: 1px solid #333333; padding-top: 1.5rem; padding-bottom: 1.5rem; font-size: 0.8rem; color: #AAAAAA; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem; position: relative; z-index: 1; }
+        @media (min-width: 768px) { .footer-bottom { flex-direction: row; } }
+        .footer-bottom-links a { margin-left: 1.5rem; transition: color 200ms ease; }
+        .footer-bottom-links a:hover { color: var(--color-gold); }
+
+        /* Specific Card Images */
+        .product-card-1 { background-image: url('https://placehold.co/300x330/555/FFF?text=Wedding+Ring'); background-position: center 25%; }
+        .product-card-2 { background-image: url('https://placehold.co/300x330/555/FFF?text=Gold+Necklace'); background-position: center 30%; }
+        .product-card-3 { background-image: url('https://placehold.co/300x330/555/FFF?text=Gold+Bangle'); background-position: center 30%; }
+        .product-card-4 { background-image: url('https://placehold.co/300x330/555/FFF?text=Gold+Earring'); background-position: center 25%; }
+        .bg-nyc { background-image: url('https://placehold.co/800x600/333333/ffffff?text=NYC+USA+Placeholder'); }
+        .bg-florida { background-image: url('https://placehold.co/800x600/333333/ffffff?text=Florida+USA+Placeholder'); }
+        .card-rings { background-image: url('https://placehold.co/400x400/181818/ffffff?text=Jewelry+Box'); background-position: center 20%; }
+        .card-bangle { background-color: #5d5345; border: none; }
+        .card-necklace { background-image: url('https://placehold.co/400x400/181818/ffffff?text=Stack+Rings+Blur'); }
+        .card-jewelry { background-image: url('https://placehold.co/400x400/181818/ffffff?text=Crystal+Ring'); }
+        .card-large-left { background-image: url('https://placehold.co/800x400/181818/ffffff?text=Diamond+Necklace+In+Box'); align-items: flex-start; justify-content: flex-end; padding: 1.5rem; }
+        .card-large-right { background-color: var(--color-gold); justify-content: center; border: none; }
+  

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewelry Price Calculator | Jewels & Rates</title>
+    <!-- Google Fonts: Inter & Prata (for a luxury feel) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;800&family=Prata&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="calculate.css">
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- html2canvas for receipt download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Firebase Imports (Required for the execution environment) -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables are set up in the script below to make them accessible globally
+    </script>
+    
+  
+</head>
+<body>
+
+    <!-- Diamond Background Pattern -->
+    <div class="background-pattern">
+        <!-- Using the Font Awesome Diamond icon -->
+        <div class="diamond-icon diamond-1"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-2"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-3"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-4"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-5"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-6"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-7"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-8"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-9"><i class="fas fa-gem"></i></div>
+        <div class="diamond-icon diamond-10"><i class="fas fa-gem"></i></div>
+    </div>
+
+
+    <div class="container">
+        <!-- Header & Live Rates -->
+        <div class="header">
+           <div class="logo-center">
+                <h1 class="logo-title">SodiqGold</h1>
+                <p class="logo-subtitle">Luxury Pieces</p>
+            </div>
+         
+            
+            <div class="market-visualizer">
+                <h3>Market Reference Data</h3>
+                <div class="chart-area" id="chart-area">
+                    <!-- Dynamic Price Bars will be inserted here -->
+                </div>
+                <div class="rate-data-container">
+                    <div class="rate-summary">
+                        <div class="rate-item">
+                            <div class="label">Fixed Gold (₦/g)</div>
+                            <div class="value">₦20,000</div>
+                        </div>
+                        <div class="rate-item">
+                            <div class="label">Fixed Diamond (₦/g)</div>
+                            <div class="value">₦400,000</div>
+                        </div>
+                    </div>
+                    <div id="live-rate-display" class="live-rate-info">
+                        <i class="fas fa-spinner fa-spin"></i> Loading live global market data...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Input Card -->
+        <div class="card" id="calculator-card">
+            <h2>Item Details</h2>
+            
+            <div class="input-group">
+                <label for="jewelry-type">1. Type of Jewelry</label>
+                <select id="jewelry-type">
+                    <option value="Ring">Ring</option>
+                    <option value="Necklace">Necklace</option>
+                    <option value="Bracelet">Bracelet</option>
+                    <option value="Earrings">Earrings</option>
+                    <option value="Custom">Custom Piece</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="weight">2. Total Weight (grams)</label>
+                <input type="number" id="weight" placeholder="Enter total item weight in grams" value="5" min="0">
+            </div>
+
+            <div class="input-group">
+                <label>3. Calculate for Material</label>
+                <div class="radio-group">
+                    <input type="radio" id="material-gold" name="material" value="gold" checked>
+                    <label for="material-gold"><i class="fas fa-certificate"></i> Gold</label>
+
+                    <input type="radio" id="material-diamond" name="material" value="diamond">
+                    <label for="material-diamond"><i class="fas fa-gem"></i> Diamond</label>
+                </div>
+            </div>
+
+            <button class="btn btn-calculate" onclick="calculateReceipt()">
+                <i class="fas fa-calculator"></i> Generate Price Estimate
+            </button>
+        </div>
+    </div>
+    
+    <!-- Receipt Modal Overlay -->
+    <div id="receipt-modal">
+        <div id="receipt-card-wrapper">
+            <!-- Positioning the close button absolutely relative to receipt-card-wrapper -->
+            <button id="close-modal-btn" onclick="closeModal()"><i class="fas fa-times-circle"></i></button>
+            <div id="receipt-card">
+                <!-- Receipt content will be generated here -->
+                <div class="receipt-header">
+                    <div class="logo">JEWELS & RATES</div>
+                    <div class="date" id="receipt-date">Date: </div>
+                    <div class="date" id="receipt-id">Receipt ID: </div>
+                </div>
+
+                <div class="receipt-line">
+                    <div class="label">Jewelry Type</div>
+                    <div class="value" id="receipt-jewelry-type"></div>
+                </div>
+                
+                <div class="receipt-line">
+                    <div class="label">Weight Used</div>
+                    <div class="value" id="receipt-weight"></div>
+                </div>
+
+                <div class="receipt-line">
+                    <div class="label">Material Calculated</div>
+                    <div class="value" id="receipt-material"></div>
+                </div>
+
+                <div class="receipt-line">
+                    <div class="label" id="receipt-rate-label">Rate Applied (₦/g)</div>
+                    <div class="value" id="receipt-subtotal"></div>
+                </div>
+                
+                <div class="receipt-line total">
+                    <div class="label">FINAL ESTIMATE</div>
+                    <div class="value" id="receipt-total"></div>
+                </div>
+                
+                <div class="receipt-footer">
+                    <i class="fas fa-exclamation-triangle"></i> Note: **Prices are dynamic and could change over time.** This is an estimate based on fixed internal rates for gold (₦20,000/g) and diamond (₦400,000/g).
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="btn btn-download" onclick="downloadReceipt()">
+                    <i class="fas fa-file-download"></i> Download Receipt (Image)
+                </button>
+                <button class="btn btn-whatsapp" onclick="contactWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Custom Message Box for alerts -->
+    <div id="message-box"></div>
+
+    
+
+    <script type="module" src="calculate.js"></script>
+</body>
+</html>

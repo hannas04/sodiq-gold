@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laramiss Luxury Pieces - The Perfect Jewels For You</title>
+    
+    <!-- Load Google Fonts (Rubik & Prata) -->
+    <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navigation Bar -->
+    <header>
+        <nav class="navbar container">
+            
+            <!-- Left Side: Logo, Menu & Primary Links (Desktop) -->
+            <div style="display: flex; align-items: center; gap: 2rem;">
+                <!-- Hamburger/Close Menu Button for Mobile -->
+                <button id="menu-button" class="mobile-menu-btn" aria-label="Toggle navigation">
+                    <i id="menu-icon-open" class="fas fa-bars"></i>
+                    <i id="menu-icon-close" class="fas fa-times" style="display: none;"></i>
+                </button>
+
+                <!-- Primary Links (Desktop) -->
+                <div class="nav-link-group primary-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about-us">About Us</a> <!-- New Link -->
+                    <a href="#collection">Collections</a>
+                    <a href="#features">Features</a>
+                    <a href="#locations">Locations</a>
+                </div>
+            </div>
+
+            <!-- Logo -->
+            <div class="logo-center">
+                <h1 class="logo-title">SodiqGold</h1>
+                <p class="logo-subtitle">Luxury Pieces</p>
+            </div>
+
+            <!-- Right Side: Secondary Links (Desktop) -->
+            <div class="nav-link-group secondary-links">
+                <a href="#arrivals">New Arrivals</a>
+                <a href="#">Blog</a>
+                <a href="#">Shop</a>
+                <a href="#">Contact</a>
+            </div>
+            <!-- Empty element to balance space for mobile layout (hidden when menu is open) -->
+            <div style="width: 2rem; visibility: hidden;" class="mobile-menu-btn"></div> 
+        </nav>
+    </header>
+
+    <!-- Mobile Menu (Full screen overlay) -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="mobile-menu-content">
+            <a href="#hero" class="mobile-menu-link">Home</a>
+            <a href="#about-us" class="mobile-menu-link">About Us</a> <!-- New Link -->
+            <a href="#collection" class="mobile-menu-link">Collections</a>
+            <a href="#features" class="mobile-menu-link">Features</a>
+            <a href="#locations" class="mobile-menu-link">Locations</a>
+            <a href="#arrivals" class="mobile-menu-link">New Arrivals</a>
+            <a href="#" class="mobile-menu-link">Blog</a>
+            <a href="#" class="mobile-menu-link">Shop</a>
+            <a href="#" class="mobile-menu-link">Contact</a>
+        </div>
+    </div>
+
+
+    <!-- Hero Section -->
+    <section class="hero-section hero-bg" id="hero">
+        <div class="dark-overlay" id="diamond-overlay" class="overlay-container"></div>
+        
+        <!-- Content Container (Fixed for Centering) -->
+        <div class="hero-container container" >
+            <!-- Text Content -->
+            <div class="hero-content animate-on-scroll slide-left">
+                <p class="hero-pre-title">Jewels That Define You</p>
+                <h2 class="hero-title">
+                    The Perfect Jewels For You
+                </h2>
+                
+                <!-- Action Buttons -->
+                <div class="button-group">
+                    <button class="btn btn-primary animate-on-scroll delay-200">
+                        Buy Now
+                    </button>
+                    <button class="btn btn-secondary animate-on-scroll delay-300">
+                        <a href="calculate.html">Invest</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us: CEO Info Section -->
+    <section class="about-us-section" id="about-us">
+        <div class="container about-content">
+            <!-- CEO Image -->
+            <div class="ceo-image-container animate-on-scroll slide-left"></div>
+            
+            <!-- CEO Details and Quote -->
+            <div class="ceo-details animate-on-scroll slide-right delay-200">
+                <p class="hero-pre-title">Our Visionary Leader</p>
+                <h3>Meet Our Founder & CEO</h3>
+                <p>
+                    Laramiss was born from a passion for crafting enduring beauty. We blend **timeless design** with modern precision to create jewelry that tells a unique story. Every piece is ethically sourced and meticulously inspected to guarantee the highest standard of luxury.
+                </p>
+                <p class="ceo-quote">
+                    "Every piece of jewelry we craft is a promise of timeless elegance and unparalleled quality. Our mission is to define luxury for the modern era."
+                    <span class="ceo-name">Sodiq S., Founder & CEO</span>
+                </p>
+                <div class="button-group" style="justify-content: flex-start; margin-top: 2rem;">
+                    <button class="btn btn-primary">
+                        Read Our Story
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" style="position: relative;">
+        <div class="container" id="diamond-overlay" class="overlay-container">
+            <div class="collection-header animate-on-scroll">
+                <div class="collection-icon">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p class="collection-offer">Hear from our clients</p>
+                <h3 class="collection-title">Client Testimonials</h3>
+            </div>
+            
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card animate-on-scroll delay-100">
+                    <i class="fas fa-quote-left testimonial-icon"></i>
+                    <p class="testimonial-text">"The bespoke ring I ordered was beyond my wildest dreams. The craftsmanship is flawless, and the customer service was exceptional. Laramiss truly delivers luxury."</p>
+                    <p class="testimonial-author">Jane Doe</p>
+                    <span class="testimonial-role">Satisfied Customer</span>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card animate-on-scroll delay-200">
+                    <i class="fas fa-quote-left testimonial-icon"></i>
+                    <p class="testimonial-text">"I have bought several pieces from Laramiss over the years. They are investments in quality and style. Highly recommend their gold collection!"</p>
+                    <p class="testimonial-author">Marcus S.</p>
+                    <span class="testimonial-role">Jewelry Collector</span>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card animate-on-scroll delay-300">
+                    <i class="fas fa-quote-left testimonial-icon"></i>
+                    <p class="testimonial-text">"The quiet hours offer made buying my wedding band a stress-free and truly personal experience. Their designs are simply the best in the market."</p>
+                    <p class="testimonial-author">Priya K.</p>
+                    <span class="testimonial-role">Bridal Client</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Collection Section -->
+    <section class="collection-section" id="collection">
+        
+        <!-- New: Transparent Positioned Jewelry Icon -->
+        <div class="jewelry-icon-overlay">
+            <i class="fas fa-gem"></i> 
+        </div>
+
+        <div class="container">
+            <div class="collection-header animate-on-scroll">
+                <div class="collection-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <p class="collection-offer">Avail Our Offer</p>
+                <h3 class="collection-title">Trending Collection</h3>
+                <a href="#" class="view-more">View more →</a>
+            </div>
+
+            <div class="collection-grid">
+                
+                <!-- Product Card 1: Wedding Ring -->
+                <div class="product-card animate-on-scroll delay-100" data-product="Wedding Ring">
+                    <div class="product-image-container product-card-1"></div>
+                    <p class="product-name">Wedding Ring</p>
+                    <p class="product-details">Machine Design, 24 Carat</p>
+                    <p class="product-price">$345/10gm</p>
+                </div>
+
+                <!-- Product Card 2: Gold Necklace -->
+                <div class="product-card animate-on-scroll delay-200" data-product="Gold Necklace">
+                    <div class="product-image-container product-card-2"></div>
+                    <p class="product-name">Gold Necklace</p>
+                    <p class="product-details">Machine Design, 24 Carat</p>
+                    <p class="product-price">$345/10gm</p>
+                </div>
+
+                <!-- Product Card 3: Barry Gold Bangle -->
+                <div class="product-card animate-on-scroll delay-300" data-product="Barry Gold Bangle">
+                    <div class="product-image-container product-card-3"></div>
+                    <p class="product-name">Barry Gold Bangle</p>
+                    <p class="product-details">Machine Design, 24 Carat</p>
+                    <p class="product-price">$345/10gm</p>
+                </div>
+
+                <!-- Product Card 4: Gold Earring -->
+                <div class="product-card animate-on-scroll delay-400" data-product="Gold Earring">
+                    <div class="product-image-container product-card-4"></div>
+                    <p class="product-name">Gold Earring</p>
+                    <p class="product-details">Machine Design, 24 Carat</p>
+                    <p class="product-price">$345/10gm</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Best Feature Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="features-header animate-on-scroll">
+                <div class="collection-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <p class="features-pre-title">Avail Our Offer</p>
+                <h3 class="features-title">Our Best Feature</h3>
+            </div>
+
+            <div class="feature-grid">
+                
+                <!-- Feature Card 1: Get On Offer Price -->
+                <div class="feature-card animate-on-scroll delay-100">
+                    <div class="feature-top">
+                        <span class="feature-number">01</span>
+                        <i class="fas fa-dollar-sign feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Get On Offer Price</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+                <!-- Feature Card 2: Quiet Hours Offer -->
+                <div class="feature-card animate-on-scroll delay-200">
+                    <div class="feature-top">
+                        <span class="feature-number">02</span>
+                        <i class="fas fa-clock feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Quiet Hours Offer</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+                <!-- Feature Card 3: Assured Quality -->
+                <div class="feature-card animate-on-scroll delay-300">
+                    <div class="feature-top">
+                        <span class="feature-number">03</span>
+                        <i class="fas fa-percent feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Assured Quality</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+                <!-- Feature Card 4: Free Cancellation -->
+                <div class="feature-card animate-on-scroll delay-400">
+                    <div class="feature-top">
+                        <span class="feature-number">04</span>
+                        <i class="fas fa-box feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Free Cancellation</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+                <!-- Feature Card 5: Payment Options -->
+                <div class="feature-card animate-on-scroll delay-500">
+                    <div class="feature-top">
+                        <span class="feature-number">05</span>
+                        <i class="fas fa-credit-card feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Payment Options</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+                <!-- Feature Card 6: Special Offers -->
+                <div class="feature-card animate-on-scroll delay-600">
+                    <div class="feature-top">
+                        <span class="feature-number">06</span>
+                        <i class="fas fa-gift feature-icon"></i>
+                    </div>
+                    <h4 class="feature-title">Special Offers</h4>
+                    <p class="feature-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats and Video Section -->
+    <section class="stats-section" id="stats">
+        <div class="container">
+            <!-- Statistics Grid -->
+            <div class="stats-grid">
+                
+                <!-- Stat Card 1: Jewelries in Album -->
+                <div class="stat-card animate-on-scroll slide-left delay-100">
+                    <i class="fas fa-crown stat-icon"></i>
+                    <p class="stat-value">84K.</p>
+                    <p class="stat-label">Jewelries in Album</p>
+                </div>
+
+                <!-- Stat Card 2: Happy Feedbacks -->
+                <div class="stat-card animate-on-scroll slide-left delay-200">
+                    <i class="far fa-thumbs-up stat-icon"></i>
+                    <p class="stat-value">10M.</p>
+                    <p class="stat-label">Happy Feedbacks</p>
+                </div>
+
+                <!-- Stat Card 3: Categories Served -->
+                <div class="stat-card animate-on-scroll slide-right delay-200">
+                    <i class="fas fa-users stat-icon"></i>
+                    <p class="stat-value">2K.</p>
+                    <p class="stat-label">Categories Served</p>
+                </div>
+
+                <!-- Stat Card 4: Happy Clients -->
+                <div class="stat-card animate-on-scroll slide-right delay-100">
+                    <i class="fas fa-gem stat-icon"></i>
+                    <p class="stat-value">100M.</p>
+                    <p class="stat-label">Happy Clients</p>
+                </div>
+
+            </div>
+            
+            <!-- Video Placeholder -->
+            <div class="media-container animate-on-scroll delay-300">
+                <div class="video-overlay" id="video-play-overlay">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location Section -->
+    <section class="location-section" id="locations">
+        <div class="container">
+            <div class="location-header animate-on-scroll">
+                <div class="collection-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="location-offer">OFFER AVAILABLE AT STORE</p>
+                <h3 class="location-title">Our Locations</h3>
+            </div>
+
+            <div class="location-grid">
+                
+                <!-- Location Card 1: NYC USA -->
+                <div class="location-card animate-on-scroll delay-100" data-location="NYC USA">
+                    <div class="location-card-bg bg-nyc"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-building card-icon"></i>
+                        <h4 class="card-location-title">NYC USA</h4>
+                        <p class="card-date">22 Dec - 25 Dec</p>
+                    </div>
+                </div>
+
+                <!-- Location Card 2: Paris France (Highlighted) -->
+                <div class="location-card highlight animate-on-scroll delay-200" data-location="Paris France">
+                    <div class="card-content">
+                        <i class="fas fa-crown card-icon"></i>
+                        <h4 class="card-location-title">Paris France</h4>
+                        <p class="card-date">22 Dec - 25 Dec</p>
+                    </div>
+                </div>
+
+                <!-- Location Card 3: Florida USA -->
+                <div class="location-card animate-on-scroll delay-300" data-location="Florida USA">
+                    <div class="location-card-bg bg-florida"></div>
+                    <div class="card-overlay"></div>
+                    <div class="card-content">
+                        <i class="fas fa-sun card-icon"></i>
+                        <h4 class="card-location-title">Florida USA</h4>
+                        <p class="card-date">22 Dec - 25 Dec</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- New Collection Arrived Section -->
+    <section class="collection-arrived-section" id="arrivals">
+        <div class="container">
+            <div class="arrival-header animate-on-scroll">
+                <div class="collection-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <p class="location-offer">AVAIL OUR OFFER</p>
+                <h3 class="arrival-title">Collection Arrived</h3>
+            </div>
+
+            <!-- Top 4-Item Grid -->
+            <div class="arrival-grid">
+                
+                <div class="arrival-card card-rings animate-on-scroll delay-100" data-item="New Rings">
+                    <div class="arrival-card-overlay"></div>
+                    <div class="card-inner-content">
+                        <i class="fas fa-ring arrival-icon"></i>
+                        <h4 class="arrival-card-title">New Rings</h4>
+                    </div>
+                </div>
+
+                <div class="arrival-card card-bangle animate-on-scroll delay-200" data-item="Copper Bangle">
+                    <div class="card-inner-content">
+                        <i class="fas fa-box-open arrival-icon"></i>
+                        <h4 class="arrival-card-title">Copper Bangle</h4>
+                        <p class="arrival-card-text" style="color: #0f0f0f; font-weight: 500;">We have modern design bracelet: get now</p>
+                    </div>
+                </div>
+
+                <div class="arrival-card card-necklace animate-on-scroll delay-300" data-item="Big Necklace">
+                    <div class="arrival-card-overlay"></div>
+                    <div class="card-inner-content">
+                        <i class="fas fa-gem arrival-icon"></i>
+                        <h4 class="arrival-card-title">Big Necklace</h4>
+                    </div>
+                </div>
+
+                <div class="arrival-card card-jewelry animate-on-scroll delay-400" data-item="Crystal Jewelry">
+                    <div class="arrival-card-overlay"></div>
+                    <div class="card-inner-content">
+                        <i class="fas fa-star arrival-icon"></i>
+                        <h4 class="arrival-card-title">Crystal Jewelry</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom 2-Item Large Grid -->
+            <div class="arrival-large-grid">
+                
+                <div class="large-card card-large-left animate-on-scroll slide-left" data-item="Diamond's Haven">
+                    <div class="arrival-card-overlay" style="background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 70%);"></div>
+                    <div class="card-inner-content" style="text-align: left; position: absolute; left: 1.5rem;">
+                        <i class="fas fa-diamond arrival-icon"></i>
+                        <h4 class="arrival-card-title large">Diamond's Haven</h4>
+                        <p class="arrival-card-text" style="max-width: 100%; margin: 0; color: #dddddd;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+
+                <div class="large-card card-large-right animate-on-scroll slide-right" data-item="Diamond's Haven Offer">
+                    <div class="card-inner-content">
+                        <i class="fas fa-box-open arrival-icon"></i>
+                        <h4 class="arrival-card-title large">Diamond's Haven</h4>
+                        <p class="arrival-card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-main">
+                
+                <!-- Column 1: Logo & About -->
+                <div class="footer-logo-block animate-on-scroll slide-left">
+                    <!-- Logo Block (reusing logo styles) -->
+                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-dark-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: -0.25rem;">
+                            <path d="M12 2 L 18 8 L 12 14 L 6 8 Z" fill="var(--color-text-dark-accent)" opacity="0.1"></path>
+                            <path d="M12 2 L 18 8 L 22 4 L 18 0" style="opacity: 0.8;"/>
+                            <path d="M12 2 L 6 8 L 2 4 L 6 0" style="opacity: 0.8;"/>
+                            <path d="M12 22 L 6 16 L 2 20 L 6 24" style="opacity: 0.8;"/>
+                            <path d="M12 22 L 18 16 L 22 20 L 18 24" style="opacity: 0.8;"/>
+                        </svg>
+                        <div>
+                            <p class="footer-logo-title" style="font-size: 1.25rem;">SodiqGold</p>
+                            <p class="footer-logo-subtitle" style="margin: 0; line-height: 1;">LUXURY PIECES</p>
+                        </div>
+                    </div>
+                    
+                    <p class="footer-about-text">
+                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                    </p>
+                    
+                    <!-- Social Media Links -->
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Vimeo"><i class="fab fa-vimeo-v"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Column 2: New Collections -->
+                <div class="animate-on-scroll">
+                    <h5 class="footer-heading">New Collections.</h5>
+                    <div class="collection-links">
+                        <a href="#">Diamond Ring</a>
+                        <a href="#">Gold Bracelet</a>
+                        <a href="#">Big Necklace</a>
+                        <a href="#">Silver Bracelet</a>
+                        <a href="#">Gold Earring</a>
+                        <a href="#">Stud Earrings</a>
+                        <a href="#">Crumpled Ring</a>
+                        <a href="#">Moon Necklace</a>
+                        <a href="#">Anice Bracelet</a>
+                    </div>
+                </div>
+                
+                <!-- Column 3: Contact Us -->
+                <div class="animate-on-scroll slide-right">
+                    <h5 class="footer-heading">Contact Us.</h5>
+                    
+                    <!-- Phone Number -->
+                    <div class="contact-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <strong>Phone Number</strong>
+                            <span>+987 876 768 76 577</span>
+                        </div>
+                    </div>
+
+                    <!-- Email Address -->
+                    <div class="contact-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-info">
+                            <strong>Email Address</strong>
+                            <span>info@webmail.com</span>
+                        </div>
+                    </div>
+
+                    <!-- Office Address -->
+                    <div class="contact-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-info">
+                            <strong>Office Address</strong>
+                            <span>14/A, Miranda City, NYC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Legal Bar -->
+            <div class="footer-bottom">
+                <p>Copyright By@Example - 2025</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Terms of use</a>
+                    <a href="#">Privacy Environmental Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Scroll Animations -->
+    <script type="module" src="index.js"></script>
+</body>
+</html>
