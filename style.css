@@ -21,7 +21,7 @@
             padding: 0;
             line-height: 1.5;
             /* Prevents horizontal scrolling during slide-in animations */
-            overflow: hidden; 
+            overflow-x: hidden; 
             scroll-behavior: smooth; /* For smooth anchor scrolling */
         }
         a {
@@ -677,13 +677,6 @@
         .arrival-card:hover, .large-card:hover { transform: scale(1.02); box-shadow: 0 0 30px rgba(255, 215, 0, 0.1); }
         .arrival-card-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); transition: background 300ms ease; }
         .arrival-card:hover .arrival-card-overlay { background: rgba(0,0,0,0.5); }
-        .arrival-card-overlay img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
         .card-inner-content { position: relative; z-index: 2; }
         .arrival-icon { font-size: 2.5rem; color: var(--color-white); margin-bottom: 1rem; }
         .card-large-right .card-inner-content { color: var(--color-dark); }

@@ -26,7 +26,9 @@
             justify-content: flex-start;
             align-items: center;
             min-height: 100vh;
-            position: relative;}
+            position: relative;
+            overflow-x: hidden;
+        }
 
         /* --- Centered Main Header --- */
         .main-header {
@@ -640,7 +642,7 @@
         
         /* Footer Bottom */
         .footer-bottom {
-            max-width: 100%;
+            max-width: 1100px;
             margin: 20px auto 0;
             display: flex;
             justify-content: space-between;
