@@ -6,9 +6,16 @@
     <title>Laramiss Luxury Pieces - The Perfect Jewels For You</title>
     
     <!-- Load Google Fonts (Rubik & Prata) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prata&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <!-- Load Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Preload critical assets -->
+    <link rel="modulepreload" href="index.js">
+    <link rel="preload" as="image" href="img/img-8.jpg">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -19,11 +26,11 @@
         <nav class="navbar container">
             
             <!-- Left Side: Logo, Menu & Primary Links (Desktop) -->
-            <div style="display: flex; align-items: center; gap: 2rem;">
+            <div class="nav-left">
                 <!-- Hamburger/Close Menu Button for Mobile -->
                 <button id="menu-button" class="mobile-menu-btn" aria-label="Toggle navigation">
-                    <i id="menu-icon-open" class="fas fa-bars"></i>
-                    <i id="menu-icon-close" class="fas fa-times" style="display: none;"></i>
+                        <i id="menu-icon-open" class="fas fa-bars"></i>
+                        <i id="menu-icon-close" class="fas fa-times"></i>
                 </button>
 
                 <!-- Primary Links (Desktop) -->
@@ -50,7 +57,7 @@
                 <a href="#">Contact</a>
             </div>
             <!-- Empty element to balance space for mobile layout (hidden when menu is open) -->
-            <div style="width: 2rem; visibility: hidden;" class="mobile-menu-btn"></div> 
+            <div class="nav-spacer mobile-menu-btn"></div>
         </nav>
     </header>
 
@@ -72,7 +79,7 @@
 
     <!-- Hero Section -->
     <section class="hero-section hero-bg" id="hero">
-        <div class="dark-overlay" id="diamond-overlay" class="overlay-container"></div>
+        <div id="diamond-overlay" class="dark-overlay overlay-container"></div>
         
         <!-- Content Container (Fixed for Centering) -->
         <div class="hero-container container" >
@@ -113,7 +120,7 @@
                     "Every piece of jewelry we craft is a promise of timeless elegance and unparalleled quality. Our mission is to define luxury for the modern era."
                     <span class="ceo-name">Sodiq S., Founder & CEO</span>
                 </p>
-                <div class="button-group" style="justify-content: flex-start; margin-top: 2rem;">
+                <div class="button-group">
                     <button class="btn btn-primary">
                         Read Our Story
                     </button>
@@ -123,8 +130,8 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="testimonials-section" style="position: relative;">
-        <div class="container" id="diamond-overlay" class="overlay-container">
+    <section class="testimonials-section">
+        <div class="container">
             <div class="collection-header animate-on-scroll">
                 <div class="collection-icon">
                     <i class="fas fa-quote-right"></i>
@@ -183,6 +190,7 @@
                 
                 <!-- Product Card 1: Wedding Ring -->
                 <div class="product-card animate-on-scroll delay-100" data-product="Wedding Ring">
+                    
                     <div class="product-image-container product-card-1"></div>
                     <p class="product-name">Wedding Ring</p>
                     <p class="product-details">Machine Design, 24 Carat</p>
@@ -191,6 +199,7 @@
 
                 <!-- Product Card 2: Gold Necklace -->
                 <div class="product-card animate-on-scroll delay-200" data-product="Gold Necklace">
+                   
                     <div class="product-image-container product-card-2"></div>
                     <p class="product-name">Gold Necklace</p>
                     <p class="product-details">Machine Design, 24 Carat</p>
@@ -199,6 +208,7 @@
 
                 <!-- Product Card 3: Barry Gold Bangle -->
                 <div class="product-card animate-on-scroll delay-300" data-product="Barry Gold Bangle">
+                    
                     <div class="product-image-container product-card-3"></div>
                     <p class="product-name">Barry Gold Bangle</p>
                     <p class="product-details">Machine Design, 24 Carat</p>
@@ -207,6 +217,7 @@
 
                 <!-- Product Card 4: Gold Earring -->
                 <div class="product-card animate-on-scroll delay-400" data-product="Gold Earring">
+                    
                     <div class="product-image-container product-card-4"></div>
                     <p class="product-name">Gold Earring</p>
                     <p class="product-details">Machine Design, 24 Carat</p>
@@ -368,7 +379,7 @@
                 
                 <!-- Location Card 1: NYC USA -->
                 <div class="location-card animate-on-scroll delay-100" data-location="NYC USA">
-                    <div class="location-card-bg bg-nyc"></div>
+                    <div class="location-card-bg bg-nyc"><img src="img/lagos-location.jpg" alt=""></div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
                         <i class="fas fa-building card-icon"></i>
@@ -388,7 +399,7 @@
 
                 <!-- Location Card 3: Florida USA -->
                 <div class="location-card animate-on-scroll delay-300" data-location="Florida USA">
-                    <div class="location-card-bg bg-florida"></div>
+                    <div class="location-card-bg bg-florida"><img src="img/tejuosho.jpg" alt=""></div>
                     <div class="card-overlay"></div>
                     <div class="card-content">
                         <i class="fas fa-sun card-icon"></i>
@@ -416,7 +427,7 @@
             <div class="arrival-grid">
                 
                 <div class="arrival-card card-rings animate-on-scroll delay-100" data-item="New Rings">
-                    <div class="arrival-card-overlay"></div>
+                    <div class="arrival-card-overlay"><img src="img/img-3.jpg" alt=""></div>
                     <div class="card-inner-content">
                         <i class="fas fa-ring arrival-icon"></i>
                         <h4 class="arrival-card-title">New Rings</h4>
@@ -427,12 +438,12 @@
                     <div class="card-inner-content">
                         <i class="fas fa-box-open arrival-icon"></i>
                         <h4 class="arrival-card-title">Copper Bangle</h4>
-                        <p class="arrival-card-text" style="color: #0f0f0f; font-weight: 500;">We have modern design bracelet: get now</p>
+                        <p class="arrival-card-text">We have modern design bracelet: get now</p>
                     </div>
                 </div>
 
                 <div class="arrival-card card-necklace animate-on-scroll delay-300" data-item="Big Necklace">
-                    <div class="arrival-card-overlay"></div>
+                    <div class="arrival-card-overlay"><img src="img/img-3.jpg" alt=""></div>
                     <div class="card-inner-content">
                         <i class="fas fa-gem arrival-icon"></i>
                         <h4 class="arrival-card-title">Big Necklace</h4>
@@ -440,7 +451,7 @@
                 </div>
 
                 <div class="arrival-card card-jewelry animate-on-scroll delay-400" data-item="Crystal Jewelry">
-                    <div class="arrival-card-overlay"></div>
+                    <div class="arrival-card-overlay"><img src="img/img-6.jpg" alt="" srcset=""></div>
                     <div class="card-inner-content">
                         <i class="fas fa-star arrival-icon"></i>
                         <h4 class="arrival-card-title">Crystal Jewelry</h4>
@@ -452,11 +463,11 @@
             <div class="arrival-large-grid">
                 
                 <div class="large-card card-large-left animate-on-scroll slide-left" data-item="Diamond's Haven">
-                    <div class="arrival-card-overlay" style="background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 70%);"></div>
-                    <div class="card-inner-content" style="text-align: left; position: absolute; left: 1.5rem;">
+                    <div class="arrival-card-overlay"><img src="img/img-9.jpg" alt=""></div>
+                    <div class="card-inner-content">
                         <i class="fas fa-diamond arrival-icon"></i>
                         <h4 class="arrival-card-title large">Diamond's Haven</h4>
-                        <p class="arrival-card-text" style="max-width: 100%; margin: 0; color: #dddddd;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                        <p class="arrival-card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
                     </div>
                 </div>
 
@@ -480,8 +491,8 @@
                 <!-- Column 1: Logo & About -->
                 <div class="footer-logo-block animate-on-scroll slide-left">
                     <!-- Logo Block (reusing logo styles) -->
-                    <div style="display: flex; align-items: center; gap: 0.5rem; justify-content: center; margin-bottom: 0.5rem;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-dark-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-top: -0.25rem;">
+                    <div class="footer-logo-wrapper">
+                        <svg class="logo-svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-dark-accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2 L 18 8 L 12 14 L 6 8 Z" fill="var(--color-text-dark-accent)" opacity="0.1"></path>
                             <path d="M12 2 L 18 8 L 22 4 L 18 0" style="opacity: 0.8;"/>
                             <path d="M12 2 L 6 8 L 2 4 L 6 0" style="opacity: 0.8;"/>
@@ -489,8 +500,8 @@
                             <path d="M12 22 L 18 16 L 22 20 L 18 24" style="opacity: 0.8;"/>
                         </svg>
                         <div>
-                            <p class="footer-logo-title" style="font-size: 1.25rem;">SodiqGold</p>
-                            <p class="footer-logo-subtitle" style="margin: 0; line-height: 1;">LUXURY PIECES</p>
+                            <p class="footer-logo-title">SodiqGold</p>
+                            <p class="footer-logo-subtitle">LUXURY PIECES</p>
                         </div>
                     </div>
                     

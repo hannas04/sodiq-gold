@@ -7,10 +7,15 @@
     <!-- Google Fonts: Inter & Prata (for a luxury feel) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght400;600;700;800&family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="calculate.css">
-    <!-- Font Awesome for Icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <!-- html2canvas for receipt download -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Reuse main site styles and icons for consistent footer -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="modulepreload" href="calculate.js">
+    <!-- Font Awesome for Icons (keep as stylesheet) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <!-- Firebase Imports (Required for the execution environment) -->
 
     <script type="module">
@@ -168,8 +173,10 @@
     <!-- Custom Message Box for alerts -->
     <div id="message-box"></div>
 
-    
+  
 
+    <!-- Move non-critical scripts to end of body and defer execution -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
     <script type="module" src="calculate.js"></script>
 </body>
 </html>

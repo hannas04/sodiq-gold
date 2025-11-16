@@ -80,34 +80,38 @@
         /**
          * Dummy Click Functionality 
          */
-        const showMessage = (text, bgColor = '#D4AF37', textColor = '#0f0f0f') => {
+        const showMessage = (text, theme = 'gold') => {
             const messageBox = document.createElement('div');
+            messageBox.className = `toast ${theme}`;
             messageBox.textContent = text;
-            messageBox.style.cssText = `position: fixed; bottom: 1.25rem; right: 1.25rem; background-color: ${bgColor}; color: ${textColor}; padding: 0.75rem 1.25rem; border-radius: 0.5rem; box-shadow: 0 10px 15px rgba(0,0,0,0.2); z-index: 200; transition: opacity 300ms ease; opacity: 1; font-size: 0.9rem; font-weight: 500;`;
             document.body.appendChild(messageBox);
-            
+
+            // Hide and remove after timeout
             setTimeout(() => {
-                messageBox.style.opacity = '0';
-                setTimeout(() => messageBox.remove(), 300);
+                messageBox.classList.add('hide');
+                setTimeout(() => messageBox.remove(), 350);
             }, 3000);
         };
-        
-        document.querySelectorAll('.btn').forEach(button => button.addEventListener('click', (e) => showMessage(`Hero action triggered: ${e.target.textContent.trim()}`, '#D4AF37', '#0f0f0f')));
-        document.querySelectorAll('.product-card').forEach(card => card.addEventListener('click', () => showMessage(`Viewing product: ${card.getAttribute('data-product')}`, '#D4AF37', '#0f0f0f')));
-        document.querySelectorAll('.feature-card').forEach(card => card.addEventListener('click', () => showMessage(`Feature selected: ${card.querySelector('.feature-title').textContent}`, '#5A67D8', 'white')));
-        document.getElementById('video-play-overlay').addEventListener('click', () => showMessage(`Video placeholder clicked. Video would start playing now.`, '#D4AF37', '#0f0f0f'));
-        document.querySelectorAll('.location-card').forEach(card => card.addEventListener('click', () => showMessage(`Visiting store in: ${card.getAttribute('data-location')}`, '#5A67D8', 'white')));
-        document.querySelectorAll('.arrival-card, .large-card').forEach(card => card.addEventListener('click', () => showMessage(`Exploring new arrival: ${card.getAttribute('data-item')}`, '#D4AF37', '#0f0f0f')));
+
+        document.querySelectorAll('.btn').forEach(button => button.addEventListener('click', (e) => showMessage(`Hero action triggered: ${e.target.textContent.trim()}`, 'gold')));
+        document.querySelectorAll('.product-card').forEach(card => card.addEventListener('click', () => showMessage(`Viewing product: ${card.getAttribute('data-product')}`, 'gold')));
+        document.querySelectorAll('.feature-card').forEach(card => card.addEventListener('click', () => showMessage(`Feature selected: ${card.querySelector('.feature-title').textContent}`, 'blue')));
+        const videoOverlay = document.getElementById('video-play-overlay');
+        if (videoOverlay) videoOverlay.addEventListener('click', () => showMessage(`Video placeholder clicked. Video would start playing now.`, 'gold'));
+        document.querySelectorAll('.location-card').forEach(card => card.addEventListener('click', () => showMessage(`Visiting store in: ${card.getAttribute('data-location')}`, 'blue')));
+        document.querySelectorAll('.arrival-card, .large-card').forEach(card => card.addEventListener('click', () => showMessage(`Exploring new arrival: ${card.getAttribute('data-item')}`, 'gold')));
 
 
 
 
         // Set the parameters for the diamond generation
-        const NUM_DIAMONDS = 150; // How many diamonds to generate
         const diamondOverlay = document.getElementById('diamond-overlay');
 
         /**
          * Generates and scatters diamond icons across the overlay container.
+         * Optimization notes:
+         * - Reduce number of diamonds on smaller viewports.
+         * - Use requestIdleCallback when available to avoid blocking initial rendering.
          */
         function generateDiamonds() {
             if (!diamondOverlay) return;
@@ -115,34 +119,34 @@
             // Clear existing diamonds if rerunning
             diamondOverlay.innerHTML = '';
 
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const NUM_DIAMONDS = vw >= 1200 ? 150 : (vw >= 768 ? 80 : 40);
+
             for (let i = 0; i < NUM_DIAMONDS; i++) {
-                // 1. Create the icon element
                 const diamond = document.createElement('i');
-                
-                // Use the Font Awesome solid gem icon (fa-gem) and the CSS class
-                diamond.className = 'fas fa-gem diamond-icon'; 
+                diamond.className = 'fas fa-gem diamond-icon';
 
-                // 2. Set random position within the 100% x 100% container
-                const randomX = Math.random() * 100; // 0 to 100%
-                const randomY = Math.random() * 100; // 0 to 100%
+                const randomX = Math.random() * 100; // percent of container width
+                const randomY = Math.random() * 100; // percent of container height
+                const randomSize = 0.8 + Math.random() * 0.6; // 0.8x - 1.4x
+                const randomDelay = Math.random() * 10;
+                const randomDuration = 5 + Math.random() * 5;
 
-                // 3. Set random size and delay for a subtle, varied look
-                const randomSize = 0.8 + Math.random() * 0.4; // Size between 0.8x and 1.2x
-                const randomDelay = Math.random() * 10; // Animation delay up to 10s
-                const randomDuration = 5 + Math.random() * 5; // Animation duration between 5s and 10s
-
-                // 4. Apply styles inline (for size and position randomness)
-                diamond.style.left = `${randomX}vw`; /* Use vw for viewport width */
-                diamond.style.top = `${randomY}vh`; /* Use vh for viewport height */
+                // Apply minimal inline transforms (position + animation) to each element.
+                diamond.style.left = `${randomX}%`;
+                diamond.style.top = `${randomY}%`;
                 diamond.style.transform = `scale(${randomSize})`;
                 diamond.style.animationDelay = `${randomDelay}s`;
                 diamond.style.animationDuration = `${randomDuration}s`;
-                
-                // 5. Append to the overlay
+
                 diamondOverlay.appendChild(diamond);
             }
         }
 
-        // Run the function when the window loads
-        window.onload = generateDiamonds;
+        // Schedule diamond generation when the browser is idle (non-blocking)
+        if (typeof requestIdleCallback === 'function') {
+            requestIdleCallback(generateDiamonds, { timeout: 1000 });
+        } else {
+            window.addEventListener('load', () => setTimeout(generateDiamonds, 300));
+        }
         

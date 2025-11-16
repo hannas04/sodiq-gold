@@ -45,9 +45,10 @@
             margin: 0;
             padding: 20px;
             display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
+            flex-direction: column; /* Stack header/content/footer */
+            align-items: center; /* Center main container horizontally */
+            justify-content: flex-start;
+            min-height: 100vh; /* Ensure viewport-height for sticky footer */
             position: relative;
             overflow-x: hidden;
         }
@@ -95,7 +96,9 @@
             display: grid;
             gap: 30px;
             position: relative;
-            z-index: 10; 
+            z-index: 10;
+            flex: 1 1 auto; /* Allow container to grow so footer stays at bottom */
+            box-sizing: border-box;
         }
 
         @media (min-width: 900px) {
