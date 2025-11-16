@@ -21,7 +21,7 @@
             padding: 0;
             line-height: 1.5;
             /* Prevents horizontal scrolling during slide-in animations */
-            overflow-x: hidden; 
+            overflow: hidden; 
             scroll-behavior: smooth; /* For smooth anchor scrolling */
         }
         a {
