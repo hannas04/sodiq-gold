@@ -15,19 +15,35 @@
             --border-color: rgba(255, 255, 255, 0.15);
         }
 
-          .logo-center {
+        body {
+            font-family: var(--font-inter);
+            background-color: var(--background-color);
+            color: var(--color-white);
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
             align-items: center;
-            /* position: absolute; */
-            /* left: 50%;
-            transform: translateX(-50%); */
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
+        /* --- Centered Main Header --- */
+        .main-header {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 10px;
+            position: relative;
+            z-index: 10;
+        }
          .logo-title {
             font-size: 1.5rem;
             letter-spacing: 0.1em;
-            color: var(--color-white);
+            font-family: var(--font-prata);
         }
 
         .logo-subtitle {
@@ -38,21 +54,31 @@
         }
         
 
-        body {
+        /* .main-header .logo {
+            font-family: var(--font-prata);
+            font-size: 2.5rem;
+            color: var(--color-gold);
+            margin-bottom: 5px;
+            line-height: 1;
+        } */
+        
+        .main-header h2 {
             font-family: var(--font-inter);
-            background-color: var(--background-color);
-            color: var(--color-white);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column; /* Stack header/content/footer */
-            align-items: center; /* Center main container horizontally */
-            justify-content: flex-start;
-            min-height: 100vh; /* Ensure viewport-height for sticky footer */
-            position: relative;
-            overflow-x: hidden;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: #ccc;
+            margin-top: 0;
+            margin-bottom: 0;
         }
-
+        
+        @media (max-width: 600px) {
+            .main-header .logo {
+                font-size: 2rem;
+            }
+            .main-header h2 {
+                font-size: 1rem;
+            }
+        }
         /* --- Diamond Background Pattern (10 Obvious Grey Icons) --- */
         .background-pattern {
             position: fixed;
@@ -66,14 +92,20 @@
 
         .diamond-icon {
             position: absolute;
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            content: "\f216"; /* Font Awesome Diamond icon */
+            /* font-size now dictates the size of the SVG container */
             font-size: 10vw;
-            /* Made lighter and more opaque */
             color: #666; 
             opacity: 0.08; 
             transition: all 0.5s;
+            /* Added explicit sizing for the SVG to fill */
+            width: 1em; 
+            height: 1em;
+        }
+        
+        .diamond-icon svg {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         /* Positioning 10 Diamonds */
@@ -92,17 +124,17 @@
         .container {
             width: 100%;
             max-width: 1100px;
-            margin-top: 20px;
+            /* margin-top removed as header is now separate */
             display: grid;
             gap: 30px;
             position: relative;
-            z-index: 10;
-            flex: 1 1 auto; /* Allow container to grow so footer stays at bottom */
-            box-sizing: border-box;
+            z-index: 10; 
+            margin-bottom: 50px;
         }
 
         @media (min-width: 900px) {
             .container {
+                /* Now directly controls the two main content cards */
                 grid-template-columns: 1fr 1fr;
             }
         }
@@ -117,10 +149,12 @@
             border: 1px solid var(--border-color);
         }
 
-        h1, h2 {
+        /* Removed redundant h1/h2 styles that were moved to .main-header */
+        h2.card-title {
             color: var(--color-gold);
             font-family: var(--font-prata);
             margin-bottom: 20px;
+            font-size: 1.5rem;
         }
         
         /* --- Market Visualizer (Forex Aesthetic) --- */
@@ -129,10 +163,11 @@
             border: 2px solid var(--color-text-dark-accent);
             padding: 15px;
             border-radius: 8px;
-            margin-top: 20px;
+            margin-top: 0; /* Adjusted for the new layout */
             text-align: left;
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
             position: relative;
+            /* Ensure it acts as a grid item */
         }
 
         .market-visualizer h3 {
@@ -152,7 +187,7 @@
             align-items: flex-end;
             padding: 5px 10px;
             overflow: hidden;
-            justify-content: space-between; /* Distribute bars evenly */
+            justify-content: space-between;
         }
         
         /* Simulate Grid Lines for Chart Aesthetic */
@@ -171,11 +206,11 @@
         .price-bar {
             width: 12px;
             margin: 0 2px;
-            border-radius: 2px 2px 0 0; /* flat bottom, rounded top */
+            border-radius: 2px 2px 0 0;
             transition: height 0.5s;
         }
-        .price-bar.bullish { background-color: #4CAF50; /* Green */ }
-        .price-bar.bearish { background-color: #D32F2F; /* Red */ }
+        .price-bar.bullish { background-color: #4CAF50; }
+        .price-bar.bearish { background-color: #D32F2F; }
 
         .rate-data-container {
             margin-top: 15px;
@@ -343,7 +378,7 @@
             z-index: 2000;
             backdrop-filter: blur(8px);
             overflow-y: auto; 
-            padding: 20px 0; /* Added vertical padding for content safety */
+            padding: 20px 0;
         }
 
         #receipt-modal.visible {
@@ -353,8 +388,8 @@
         #receipt-card-wrapper {
             /* Max width for desktop/tablet */
             max-width: 550px; 
-            width: 95%; /* Responsive width for all screens */
-            margin: auto; /* Center wrapper horizontally */
+            width: 95%;
+            margin: auto;
             padding: 0; 
             background: none;
             box-shadow: none;
@@ -459,8 +494,8 @@
         /* Modal Close Button Styling */
         #close-modal-btn {
             position: absolute;
-            top: -10px; /* Adjust slightly up */
-            right: 0px; /* Adjust slightly right */
+            top: -10px;
+            right: 0px;
             background: none;
             color: var(--color-white);
             border: none;
@@ -481,5 +516,207 @@
         #receipt-card-wrapper {
             position: relative; 
         }
+        
+        /* --- New Footer Styles --- */
+        .site-footer {
+            width: 100vw;
+            background-color: #1a1a1a;
+            padding: 50px 20px 20px 20px;
+            margin-top: 50px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-top: 2px solid var(--color-text-dark-accent);
+        }
 
- 
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #333;
+        }
+
+        .footer-column {
+            padding: 10px 0;
+        }
+        
+        .footer-logo {
+            font-family: var(--font-prata);
+            font-size: 1.5rem;
+            color: var(--color-gold);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+        
+        .footer-logo .subtitle {
+            font-family: var(--font-inter);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ccc;
+            margin-top: 5px;
+        }
+        
+        .footer-column p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: #333;
+            color: var(--color-white);
+            border-radius: 8px;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark);
+        }
+        
+        .footer-column h3 {
+            font-family: var(--font-inter);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.2s;
+        }
+        
+        .footer-links li a:hover {
+            color: var(--color-gold);
+        }
+        
+        /* Contact Info Styling */
+        .contact-info .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info .contact-item i {
+            font-size: 1.2rem;
+            color: var(--color-gold);
+            margin-right: 15px;
+        }
+        
+        .contact-info .info-details {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-info .info-details .label {
+            font-size: 0.8rem;
+            color: #ccc;
+        }
+        
+        .contact-info .info-details span {
+            font-size: 1rem;
+            color: var(--color-white);
+        }
+        
+        /* Footer Bottom */
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 20px auto 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        .footer-bottom p {
+            margin: 0;
+        }
+
+        .footer-bottom .bottom-links a {
+            color: #888;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        
+        .footer-bottom .bottom-links a:hover {
+            color: var(--color-gold);
+        }
+
+        /* Responsive adjustments for the footer */
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-column {
+                border-bottom: 1px dotted #333;
+                padding-bottom: 20px;
+            }
+            
+            .footer-column:first-child {
+                padding-top: 0;
+            }
+            
+            .footer-column:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+            
+            .footer-logo {
+                font-size: 1.8rem;
+            }
+            
+            .social-icons {
+                margin-top: 15px;
+            }
+            
+            .social-icons a {
+                margin: 0 5px;
+            }
+            
+            .contact-info .contact-item {
+                justify-content: center;
+                text-align: left;
+            }
+            .contact-info .contact-item i {
+                 margin-right: 10px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-bottom p {
+                margin-bottom: 10px;
+            }
+            
+            .footer-bottom .bottom-links a {
+                margin: 0 10px;
+            }
+        }
+

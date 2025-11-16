@@ -54,7 +54,7 @@
                     return;
                 }
                 
-                // setLogLevel('Debug'); // Removed for cleaner console
+                // Removed: setLogLevel('Debug');
                 const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
                 const { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
                 const { getFirestore } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
@@ -241,7 +241,7 @@
             html2canvas(receiptElement, { 
                 scale: 2, 
                 backgroundColor: darkBg,
-                useCORS: true // Recommended for modern browsers
+                useCORS: true
             }).then(canvas => {
                 try {
                     const image = canvas.toDataURL('image/png');
@@ -299,4 +299,4 @@ I would like to discuss this piece further.`;
             // Regenerate bars on window resize for responsiveness
             window.addEventListener('resize', generatePriceBars);
         }
-  
+   
