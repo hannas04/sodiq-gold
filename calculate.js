@@ -8,9 +8,9 @@
         let userId = null;
 
         // Constants for Rates (Fixed as per user's request)
-        const GOLD_RATE_PER_GRAM = 20000; // NGN
-        const DIAMOND_RATE_PER_GRAM = 400000; // NGN
-        const CLIENT_WHATSAPP_NUMBER = "2348012345678"; // Placeholder
+        const GOLD_RATES = { buy: 130000, sell: 120000 }; // NGN per gram
+        const DIAMOND_RATES = { buy: 180000, sell: 160000 }; // NGN per gram
+        const CLIENT_WHATSAPP_NUMBER = "2349066666662"; // Placeholder
         
         // Helper function for custom message box
         const messageBox = document.getElementById('message-box');
@@ -180,6 +180,7 @@
             const jewelryType = document.getElementById('jewelry-type').value;
             const weight = parseFloat(document.getElementById('weight').value) || 0;
             const material = document.querySelector('input[name="material"]:checked').value;
+            const transaction = document.querySelector('input[name="transaction"]:checked').value;
 
             if (weight <= 0) {
                 showMessage("Please enter a valid item weight.");
@@ -189,14 +190,15 @@
             let calculatedRate = 0;
             let finalRatePerGram = 0;
             let materialLabel = "";
+            let transactionLabel = transaction === 'buy' ? 'Buy' : 'Sell';
             
             if (material === 'gold') {
-                finalRatePerGram = GOLD_RATE_PER_GRAM;
-                calculatedRate = weight * GOLD_RATE_PER_GRAM;
+                finalRatePerGram = GOLD_RATES[transaction];
+                calculatedRate = weight * finalRatePerGram;
                 materialLabel = "Gold";
             } else { // diamond
-                finalRatePerGram = DIAMOND_RATE_PER_GRAM;
-                calculatedRate = weight * DIAMOND_RATE_PER_GRAM;
+                finalRatePerGram = DIAMOND_RATES[transaction];
+                calculatedRate = weight * finalRatePerGram;
                 materialLabel = "Diamond";
             }
             
@@ -210,9 +212,9 @@
             document.getElementById('receipt-id').textContent = `Receipt ID: ${receiptId}`;
             document.getElementById('receipt-jewelry-type').textContent = jewelryType;
             document.getElementById('receipt-weight').textContent = `${weight} grams`;
-            document.getElementById('receipt-material').textContent = materialLabel;
+            document.getElementById('receipt-material').textContent = `${materialLabel} (${transactionLabel})`;
             
-            document.getElementById('receipt-rate-label').textContent = `${materialLabel} Rate (${formatCurrency(finalRatePerGram)}/g)`;
+            document.getElementById('receipt-rate-label').textContent = `${materialLabel} ${transactionLabel} Rate (${formatCurrency(finalRatePerGram)}/g)`;
             document.getElementById('receipt-subtotal').textContent = formatCurrency(calculatedRate);
             
             document.getElementById('receipt-total').textContent = formatCurrency(finalTotal);
@@ -222,6 +224,7 @@
                 jewelryType,
                 weight,
                 materialLabel,
+                transaction: transactionLabel,
                 finalTotal: formatCurrency(finalTotal),
                 receiptId
             };
@@ -268,12 +271,13 @@
                 return;
             }
 
-            const { jewelryType, finalTotal, weight, materialLabel } = window.receiptDetails;
+            const { jewelryType, finalTotal, weight, materialLabel, transaction } = window.receiptDetails;
             
             const message = `Hello, I saw the price estimate for the following jewelry:
 *Item:* ${jewelryType}
 *Weight:* ${weight}g
 *Material:* ${materialLabel}
+*Transaction:* ${transaction}
 *Estimated Price:* ${finalTotal}
 
 I would like to discuss this piece further.`;
