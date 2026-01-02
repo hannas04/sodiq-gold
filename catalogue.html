@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Catalogue | Alhaji Sodiq Gold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --navy: #1a3a63;
+            --gold: #c5a059;
+            --light-gold: #e2c99d;
+            --white: #fcfcfc;
+            --dark: #0f172a;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fff; color: var(--navy); }
+        h1, h2, h3, .brand-font { font-family: 'Cinzel', serif; }
+
+        /* Navigation */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-text { font-size: 1.2rem; font-weight: bold; }
+        .back-home { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; color: var(--gold); }
+
+        /* Header */
+        .catalogue-header {
+            padding: 60px 5%;
+            text-align: center;
+            background: var(--navy);
+            color: white;
+        }
+
+        .catalogue-header h1 { font-size: 3rem; margin-bottom: 10px; }
+        .catalogue-header p { color: var(--light-gold); letter-spacing: 2px; }
+
+        /* Filters */
+        .filter-container {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            background: #f8f9fa;
+            position: sticky;
+            top: 70px;
+            z-index: 900;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--navy);
+            cursor: pointer;
+            font-family: 'Montserrat';
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* Catalog Grid */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 50px 5%;
+        }
+
+        .catalog-item {
+            background: white;
+            border: 1px solid #eee;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catalog-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .item-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .item-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .item-category {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .item-name {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--navy);
+        }
+
+        .item-details {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.85rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .gram-tag { font-weight: bold; color: var(--gold); }
+
+        /* Inquiry Button */
+        .inquiry-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center;
+            font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .catalogue-header h1 { font-size: 2rem; }
+            .catalog-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text">ALHAJI <span style="color:var(--gold)">SODIQ</span> GOLD</div>
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </nav>
+
+    <header class="catalogue-header">
+        <h1>Private Collection</h1>
+        <p>AUTHENTICITY IN EVERY GRAM</p>
+    </header>
+
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterItems('all')">All Pieces</button>
+        <button class="filter-btn" onclick="filterItems('chains')">Chains</button>
+        <button class="filter-btn" onclick="filterItems('rings')">Rings</button>
+        <button class="filter-btn" onclick="filterItems('bracelets')">Bracelets</button>
+        <button class="filter-btn" onclick="filterItems('pendants')">Pendants</button>
+    </div>
+
+    <main class="catalog-grid" id="catalog">
+        <div class="catalog-item chains">
+            <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=500" class="item-image" alt="Cuban Link">
+            <div class="item-info">
+                <span class="item-category">Chains</span>
+                <h3 class="item-name">18k Miami Cuban Link</h3>
+                <div class="item-details">
+                    <span>Purity: <strong>18k</strong></span>
+                    <span class="gram-tag">Weight: 45.5g</span>
+                </div>
+                <a href="https://wa.me/2348001234567?text=Inquiry on Miami Cuban Link" class="inquiry-btn">PRICE ON REQUEST</a>
+            </div>
+        </div>
+
+        <div class="catalog-item rings">
+            <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=500" class="item-image" alt="Diamond Ring">
+            <div class="item-info">
+                <span class="item-category">Rings</span>
+                <h3 class="item-name">VVS Diamond Wedding Band</h3>
+                <div class="item-details">
+                    <span>Purity: <strong>22k</strong></span>
+                    <span class="gram-tag">Weight: 12.2g</span>
+                </div>
+                <a href="#" class="inquiry-btn">PRICE ON REQUEST</a>
+            </div>
+        </div>
+
+        <div class="catalog-item bracelets">
+            <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=500" class="item-image" alt="Gold Bracelet">
+            <div class="item-info">
+                <span class="item-category">Bracelets</span>
+                <h3 class="item-name">Solid Gold Figaro Bracelet</h3>
+                <div class="item-details">
+                    <span>Purity: <strong>18k</strong></span>
+                    <span class="gram-tag">Weight: 28.0g</span>
+                </div>
+                <a href="#" class="inquiry-btn">PRICE ON REQUEST</a>
+            </div>
+        </div>
+
+        </main>
+
+    <a href="https://wa.me/2348001234567" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function filterItems(category) {
+            const items = document.querySelectorAll('.catalog-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            // Update Active Button
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase() === category || (category === 'all' && btn.innerText === 'All Pieces')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Filter Logic
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                    setTimeout(() => item.style.opacity = '1', 10);
+                } else {
+                    item.style.opacity = '0';
+                    setTimeout(() => item.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Script to generate placeholders for 100 items (For demo purposes)
+        // In reality, you will replace these with your actual images/data
+        const catalog = document.getElementById('catalog');
+        const categories = ['chains', 'rings', 'bracelets', 'pendants'];
+        
+        for (let i = 4; i <= 100; i++) {
+            const cat = categories[Math.floor(Math.random() * categories.length)];
+            const newItem = `
+                <div class="catalog-item ${cat}">
+                    <img src="https://images.unsplash.com/photo-1611085583191-a3b1a30a8a31?q=80&w=500&sig=${i}" class="item-image" alt="Jewelry">
+                    <div class="item-info">
+                        <span class="item-category">${cat}</span>
+                        <h3 class="item-name">Royal ${cat.charAt(0).toUpperCase() + cat.slice(1)} Piece #${i}</h3>
+                        <div class="item-details">
+                            <span>Purity: <strong>18k</strong></span>
+                            <span class="gram-tag">Weight: ${ (Math.random() * 50 + 5).toFixed(1) }g</span>
+                        </div>
+                        <a href="#" class="inquiry-btn">PRICE ON REQUEST</a>
+                    </div>
+                </div>
+            `;
+            catalog.innerHTML += newItem;
+        }
+    </script>
+</body>
+</html>

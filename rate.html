@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Market Rates | Alhaji Sodiq Gold</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --navy: #1a3a63;
+            --gold: #c5a059;
+            --light-gold: #e2c99d;
+            --white: #fcfcfc;
+            --dark: #0f172a;
+            --success: #22c55e;
+            --danger: #ef4444;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #0b0f1a; color: #e2e8f0; }
+        h1, h2, .brand-font { font-family: 'Cinzel', serif; }
+
+        /* Navigation */
+        nav {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-text { font-size: 1.1rem; font-weight: bold; color: var(--white); }
+        .back-link { color: var(--gold); font-size: 0.8rem; text-transform: uppercase; text-decoration: none; font-weight: 600; }
+
+        /* Market Header */
+        .market-header {
+            padding: 40px 5%;
+            background: linear-gradient(to bottom, #1a3a63, #0b0f1a);
+            text-align: center;
+        }
+        .market-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success);
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid var(--success);
+        }
+
+        /* Forex Style Ticker Grid */
+        .ticker-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 5%;
+            margin-top: -30px;
+        }
+
+        .ticker-card {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 4px;
+            border-left: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .symbol { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #94a3b8; }
+        .price { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: bold; margin: 10px 0; display: block; }
+        .change { font-size: 0.85rem; font-weight: bold; }
+        .change.up { color: var(--success); }
+        .change.down { color: var(--danger); }
+
+        /* Rates Table */
+        .table-section { padding: 50px 5%; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1e293b;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th { background: #334155; color: var(--light-gold); text-align: left; padding: 15px; text-transform: uppercase; font-size: 0.8rem; }
+        td { padding: 15px; border-bottom: 1px solid #334155; font-family: 'JetBrains Mono', monospace; }
+        tr:hover { background: #263349; }
+
+        /* Calculator Section */
+        .calc-section {
+            background: #1a3a63;
+            padding: 50px 5%;
+            margin: 40px 5%;
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .calc-info { flex: 1; min-width: 300px; }
+        .calc-box {
+            flex: 1;
+            min-width: 300px;
+            background: #0f172a;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--gold);
+        }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; font-size: 0.8rem; margin-bottom: 8px; color: var(--light-gold); }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 4px;
+            outline: none;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(197, 160, 89, 0.1);
+            border: 1px dashed var(--gold);
+            text-align: center;
+        }
+        #total-price { font-size: 2rem; color: var(--gold); font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .ticker-container { grid-template-columns: 1fr; }
+            .price { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-text">ALHAJI <span style="color:var(--gold)">SODIQ</span> GOLD</div>
+        <a href="index.html" class="back-link"><i class="fas fa-chart-line"></i> Dashboard</a>
+    </nav>
+
+    <div class="market-header">
+        <div class="market-status"><i class="fas fa-circle"></i> LIVE MARKET OPEN</div>
+        <h1>XAU/NGN Terminal</h1>
+        <p style="color: #94a3b8; margin-top: 10px;">Global Precious Metal Rates Adjusted to Local Market</p>
+    </div>
+
+    <div class="ticker-container">
+        <div class="ticker-card">
+            <span class="symbol">GOLD_24K / GRAM</span>
+            <span class="price" id="price-24k">₦98,450.00</span>
+            <span class="change up"><i class="fas fa-caret-up"></i> +1.24%</span>
+        </div>
+        <div class="ticker-card">
+            <span class="symbol">GOLD_18K / GRAM</span>
+            <span class="price" id="price-18k">₦73,837.00</span>
+            <span class="change up"><i class="fas fa-caret-up"></i> +0.85%</span>
+        </div>
+        <div class="ticker-card" style="border-left-color: #94a3b8;">
+            <span class="symbol">USD / NGN (PARALLEL)</span>
+            <span class="price">₦1,540.00</span>
+            <span class="change down"><i class="fas fa-caret-down"></i> -0.12%</span>
+        </div>
+    </div>
+
+    <section class="table-section">
+        <h2 style="margin-bottom: 25px;">Detailed <span style="color:var(--gold)">Specifications</span></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Asset Class</th>
+                    <th>Purity</th>
+                    <th>Price per Gram</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Investment Bullion</td>
+                    <td>24K (99.9%)</td>
+                    <td>₦98,450</td>
+                    <td style="color:var(--success)">High</td>
+                </tr>
+                <tr>
+                    <td>Emirati Gold</td>
+                    <td>22K (91.6%)</td>
+                    <td>₦90,240</td>
+                    <td style="color:var(--success)">In Stock</td>
+                </tr>
+                <tr>
+                    <td>Luxury Jewelry</td>
+                    <td>18K (75.0%)</td>
+                    <td>₦73,837</td>
+                    <td style="color:var(--success)">In Stock</td>
+                </tr>
+                <tr>
+                    <td>White Gold</td>
+                    <td>18K (VVS Set)</td>
+                    <td>₦82,000*</td>
+                    <td style="color:var(--gold)">Limited</td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size: 0.7rem; color: #64748b; margin-top: 15px;">*Prices are subject to change based on global market volatility and fixing.</p>
+    </section>
+
+    <section class="calc-section">
+        <div class="calc-info">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Rate <span style="color:var(--gold)">Calculator</span></h2>
+            <p>Estimate the value of your jewelry or intended purchase instantly. Our calculator uses real-time market data to provide accurate valuations.</p>
+        </div>
+        
+        <div class="calc-box">
+            <div class="input-group">
+                <label>Select Karat</label>
+                <select id="karat-select">
+                    <option value="98450">24K Gold (99.9%)</option>
+                    <option value="90240">22K Gold (91.6%)</option>
+                    <option value="73837" selected>18K Gold (75.0%)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Weight in Grams (g)</label>
+                <input type="number" id="weight-input" placeholder="e.g. 15.5" step="0.1">
+            </div>
+            <div class="result-box">
+                <label>ESTIMATED TOTAL VALUE</label>
+                <div id="total-price">₦0.00</div>
+            </div>
+            <a href="https://wa.me/2348001234567" style="display:block; text-align:center; background:var(--gold); color:white; text-decoration:none; padding:15px; border-radius:4px; margin-top:20px; font-weight:bold;">LOCK THIS RATE</a>
+        </div>
+    </section>
+
+    <script>
+        // Real-time Calculation Logic
+        const karatSelect = document.getElementById('karat-select');
+        const weightInput = document.getElementById('weight-input');
+        const totalPriceDisplay = document.getElementById('total-price');
+
+        function calculate() {
+            const rate = parseFloat(karatSelect.value);
+            const weight = parseFloat(weightInput.value) || 0;
+            const total = rate * weight;
+            
+            totalPriceDisplay.innerText = '₦' + total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        karatSelect.addEventListener('change', calculate);
+        weightInput.addEventListener('input', calculate);
+
+        // Simulated "Live" Price Movement
+        function simulateMarket() {
+            const price24k = document.getElementById('price-24k');
+            const current = 98450;
+            const fluctuation = (Math.random() * 20 - 10); // Random movement +/- 10 Naira
+            const newPrice = current + fluctuation;
+            price24k.innerText = '₦' + newPrice.toLocaleString(undefined, {minimumFractionDigits: 2});
+        }
+
+        setInterval(simulateMarket, 5000); // Update every 5 seconds
+    </script>
+</body>
+</html>
